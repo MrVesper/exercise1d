@@ -1,6 +1,7 @@
 package wdsr.exercise1.conversions;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Created by Marek on 14.02.2016.
@@ -14,6 +15,20 @@ public class ArrayConverter {
 	 * @throws NumberFormatException if any of the strings does not represent an integer value.
 	 */
     public int[] convertToInts(String[] strings) {
-        return Arrays.stream(strings).mapToInt(Integer::valueOf).toArray();
+    	if (strings == null || strings.length==0) {
+        	throw new NullPointerException("Null or empty argument: "+strings);
+        }    	
+      	int[] arr =  Arrays.stream(strings).filter(Objects::nonNull).mapToInt(Integer::valueOf).toArray();
+      	
+      	if(arr == null){
+      		throw new NullPointerException("Created Int array is null");
+      	}
+
+      	for(Integer i : arr){
+      		if(!(i instanceof Integer)){
+      			throw new NumberFormatException("This string vale does not represent integer value");
+      		}
+      	}
+      	return arr;
     }
 }

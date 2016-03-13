@@ -1,8 +1,7 @@
 package wdsr.exercise1.logic;
 
-import org.junit.Before;
 import org.junit.Test;
-
+import org.junit.Before;
 import wdsr.exercise1.conversions.ArrayConverter;
 
 public class ArrayConventerTest {
